@@ -365,4 +365,8 @@ to Delicious"
 
 (provide 'helm-delicious)
 
+
+;; (magit-push)
+;; (yaoddmuse-post "EmacsWiki" "helm-delicious.el" (buffer-name) (buffer-string) "update")
+
 ;;; helm-delicious.el ends here
