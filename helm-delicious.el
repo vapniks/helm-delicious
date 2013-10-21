@@ -343,7 +343,7 @@ to Delicious"
   (replace-regexp-in-string
    "\"" "" (cdr (assoc elm helm-c-delicious-cache))))
 
-(defun helm-c-delicious-browse-bookmark (elm &optional browser new-tab)
+(defun helm-c-delicious-browse-bookmark (x &optional browser new-tab)
   "Action function for helm-delicious"
   (let* ((fn (case browser
                (firefox 'browse-url-firefox)
@@ -351,7 +351,8 @@ to Delicious"
                (w3m 'w3m-browse-url)
                (t 'browse-url)))
          (arg (and (eq fn 'w3m-browse-url) new-tab)))
-    (funcall fn (helm-c-delicious-bookmarks-get-value elm) arg)))
+    (dolist (elm (helm-marked-candidates))
+      (funcall fn (helm-c-delicious-bookmarks-get-value elm) arg))))
 
 (defun helm-c-highlight-delicious-bookmarks (books)
   "Highlight all Delicious bookmarks"
