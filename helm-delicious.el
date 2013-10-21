@@ -5,8 +5,8 @@
 ;; Author: Thierry Volpiatto <thierry.volpiatto@gmail.com>
 ;; Maintainer: Joe Bloggs <vapniks@yahoo.com>
 ;; Copyright (C) 2008, 2009 Thierry Volpiatto, all rights reserved
-;; Version: 1.1
-;; Last-Updated: 07/08/2013 01:28:00
+;; Version: 1.2
+;; Last-Updated: 2013-10-21 01:28:00
 ;; URL: https://github.com/vapniks/helm-delicious
 ;; Keywords: 
 ;; Compatibility: Gnus Emacs 24.3
