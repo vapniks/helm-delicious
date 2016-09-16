@@ -255,7 +255,7 @@ finding the path of your .authinfo file that is normally ~/.authinfo."
       (kill-buffer (current-buffer)))))
 
 (defun helm-set-up-delicious-bookmarks-alist ()
-  "Setup an alist of all delicious bookmarks from xml file"
+  "Setup an alist of all delicious bookmarks from xml file."
   (let ((gen-alist ())
         (tag-list ())
         (tag-len 0))
@@ -264,7 +264,7 @@ finding the path of your .authinfo file that is normally ~/.authinfo."
       (helm-wget-retrieve-delicious))
     (setq tag-list (helm-delicious-get-all-tags-from-cache))
     (loop for i in tag-list
-          for len = (length i) 
+          for len = (length i)
           when (> len tag-len) do (setq tag-len len))
     (with-temp-buffer
       (insert-file-contents helm-c-delicious-cache-file)
@@ -273,7 +273,10 @@ finding the path of your .authinfo file that is normally ~/.authinfo."
                                               (point-max)))
                        'post)))
     (loop for i in gen-alist
-          for tag = (xml-get-attribute i 'tag)
+          for tag = (let ((tagval (xml-get-attribute i 'tag)))
+		      (if (not (string= tagval ""))
+			  tagval
+			(xml-get-attribute i 'tags)))
           for desc = (xml-get-attribute i 'description)
           for url = (xml-get-attribute i 'href)
           for interval = (- tag-len (length tag))
